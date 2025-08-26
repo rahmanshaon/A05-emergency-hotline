@@ -1,7 +1,21 @@
-// ========== Heart React Functionality ==========
-const heartCountElement = document.getElementById("heart-count");
-const allHeartIcons = document.querySelectorAll(".heart-icon");
+// ========== Selecting Elements ==========
 
+// Navbar Stats Elements
+const heartCountElement = document.getElementById("heart-count");
+const coinCountElement = document.getElementById("coin-count");
+const copyCountElement = document.getElementById("copy-count");
+
+// Buttons and Icons
+const allHeartIcons = document.querySelectorAll(".heart-icon");
+const allCopyButtons = document.querySelectorAll(".copy-button");
+const allCallButtons = document.querySelectorAll(".call-button");
+const clearHistoryButton = document.getElementById("clear-history-button");
+
+// Call History Section
+const callHistoryList = document.getElementById("call-history-list");
+const emptyHistoryMessage = document.getElementById("empty-history-msg");
+
+// ========== Heart React Functionality ==========
 function handleHeartClick(event) {
   const clickedIcon = event.target;
   let currentHeartCount = parseInt(heartCountElement.innerText);
@@ -19,9 +33,6 @@ for (let i = 0; i < allHeartIcons.length; i++) {
 }
 
 //========== Copy Functionality ==========
-const copyCountElement = document.getElementById("copy-count");
-const allCopyButtons = document.querySelectorAll(".copy-button");
-
 function handleCopyClick(event) {
   const parentCard = event.target.closest(".bg-white");
   const numberToCopy = parentCard.querySelector(".hotline-number").innerText;
@@ -42,9 +53,6 @@ for (let i = 0; i < allCopyButtons.length; i++) {
 }
 
 //========== Call Functionality ==========
-const coinCountElement = document.getElementById("coin-count");
-const allCallButtons = document.querySelectorAll(".call-button");
-
 function handleCallClick(event) {
   let currentCoinCount = parseInt(coinCountElement.innerText);
 
@@ -71,10 +79,6 @@ for (let i = 0; i < allCallButtons.length; i++) {
 }
 
 //========== Call History Functionality ==========
-const clearHistoryButton = document.getElementById("clear-history-button");
-const callHistoryList = document.getElementById("call-history-list");
-const emptyHistoryMessage = document.getElementById("empty-history-msg");
-
 function addCallToHistory(name, number) {
   emptyHistoryMessage.style.display = "none";
 
@@ -100,3 +104,12 @@ function addCallToHistory(name, number) {
 
   callHistoryList.prepend(newHistoryItem);
 }
+
+//========== Clear History Functionality ==========
+function handleClearHistoryClick() {
+  callHistoryList.innerHTML = "";
+  callHistoryList.appendChild(emptyHistoryMessage);
+  emptyHistoryMessage.style.display = "block";
+}
+
+clearHistoryButton.addEventListener("click", handleClearHistoryClick);

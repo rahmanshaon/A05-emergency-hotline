@@ -6,7 +6,7 @@ function handleHeartClick(event) {
   const clickedIcon = event.target;
   let currentHeartCount = parseInt(heartCountElement.innerText);
 
-  currentHeartCount = currentHeartCount + 1;
+  currentHeartCount += 1;
   heartCountElement.innerText = currentHeartCount;
 
   clickedIcon.classList.add("fa-solid", "text-red-500");
@@ -16,4 +16,31 @@ function handleHeartClick(event) {
 for (let i = 0; i < allHeartIcons.length; i++) {
   const currentIcon = allHeartIcons[i];
   currentIcon.addEventListener("click", handleHeartClick);
+}
+
+//Call Functionality
+const coinCountElement = document.getElementById("coin-count");
+const allCallButtons = document.querySelectorAll(".call-button");
+
+function handleCallClick(event) {
+  let currentCoinCount = parseInt(coinCountElement.innerText);
+
+  if (currentCoinCount < 20) {
+    alert("আপনার পর্যাপ্ত পরিমান কয়েন নেই! কল করতে কমপক্ষে ২০ কয়েন লাগবে।");
+    return;
+  }
+
+  currentCoinCount -= 20;
+  coinCountElement.innerText = currentCoinCount;
+
+  const parentCard = event.target.closest(".bg-white");
+  const serviceName = parentCard.querySelector("h3").innerText;
+  const serviceNumber = parentCard.querySelector(".hotline-number").innerText;
+
+  alert("Calling " + serviceName + " (" + serviceNumber + ")...");
+}
+
+for (let i = 0; i < allCallButtons.length; i++) {
+  const currentButton = allCallButtons[i];
+  currentButton.addEventListener("click", handleCallClick);
 }

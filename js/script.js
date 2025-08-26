@@ -61,9 +61,42 @@ function handleCallClick(event) {
   const serviceNumber = parentCard.querySelector(".hotline-number").innerText;
 
   alert("Calling " + serviceName + " (" + serviceNumber + ")...");
+
+  addCallToHistory(serviceName, serviceNumber);
 }
 
 for (let i = 0; i < allCallButtons.length; i++) {
   const currentButton = allCallButtons[i];
   currentButton.addEventListener("click", handleCallClick);
+}
+
+//========== Call History Functionality ==========
+const clearHistoryButton = document.getElementById("clear-history-button");
+const callHistoryList = document.getElementById("call-history-list");
+const emptyHistoryMessage = document.getElementById("empty-history-msg");
+
+function addCallToHistory(name, number) {
+  emptyHistoryMessage.style.display = "none";
+
+  const now = new Date();
+  const callTime = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+
+  const newHistoryItem = document.createElement("div");
+  newHistoryItem.className =
+    "bg-gray-50 rounded-lg p-3 flex justify-between items-center";
+
+  newHistoryItem.innerHTML = `
+      <div>
+        <p class="font-bold text-gray-800">${name}</p>
+        <p class="text-sm text-gray-500">${number}</p>
+      </div>
+      <span class="text-sm text-gray-600">${callTime}</span>
+  `;
+
+  callHistoryList.prepend(newHistoryItem);
 }

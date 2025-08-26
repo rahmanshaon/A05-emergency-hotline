@@ -13,10 +13,53 @@
       rel="stylesheet"
     />
 
+    <!-- Font awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
-  <body style="font-family: 'Hind Madurai', sans-serif" class="bg-emerald-50">
 
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #f5fff6;
+        font-family: "Hind Madurai", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!--======= HEADER PART START =======-->
+    <header class="py-6 px-4">
+      <!--======= NAVBAR PART START =======-->
+      <nav class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between gap-5">
+        <!-- Logo and Title -->
+        <div class="flex items-center gap-3">
+          <img src="./images/logo.png" alt="" class="h-12"/>
+          <span class="text-xl font-black text-[#006747]">Emergency<br />Service</span>
+        </div>
+
+        <!-- Stats section -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="bg-[#41ff6b1a] rounded-full px-4 py-2 flex items-center gap-2">
+            <span class="font-bold text-black">0</span>
+            <img src="./images/heart.png" alt="" class="h-5"/>
+          </div>
+          <div class="bg-[#41ff6b1a] rounded-full px-4 py-2 flex items-center gap-2">
+            <span class="font-bold text-black">100</span>
+            <img src="./images/coin.png" alt="" class="h-5"/>
+          </div>
+          <button class="bg-green-600 text-white rounded-full px-5 py-2 font-bold">
+            <span>2</span>
+            <span>Copy</span>
+          </button>
+        </div>
+      </nav>
+    </header>
   </body>
 </html>

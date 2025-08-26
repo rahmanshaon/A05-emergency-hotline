@@ -1,4 +1,4 @@
-// Heart React Functionality
+// ========== Heart React Functionality ==========
 const heartCountElement = document.getElementById("heart-count");
 const allHeartIcons = document.querySelectorAll(".heart-icon");
 
@@ -18,7 +18,30 @@ for (let i = 0; i < allHeartIcons.length; i++) {
   currentIcon.addEventListener("click", handleHeartClick);
 }
 
-//Call Functionality
+//========== Copy Functionality ==========
+const copyCountElement = document.getElementById("copy-count");
+const allCopyButtons = document.querySelectorAll(".copy-button");
+
+function handleCopyClick(event) {
+  const parentCard = event.target.closest(".bg-white");
+  const numberToCopy = parentCard.querySelector(".hotline-number").innerText;
+
+  navigator.clipboard.writeText(numberToCopy).then(function () {
+    alert("নম্বর কপি হয়েছে: " + numberToCopy);
+
+    let currentCopyCount = parseInt(copyCountElement.innerText);
+    currentCopyCount += 1;
+
+    copyCountElement.innerText = currentCopyCount;
+  });
+}
+
+for (let i = 0; i < allCopyButtons.length; i++) {
+  const currentButton = allCopyButtons[i];
+  currentButton.addEventListener("click", handleCopyClick);
+}
+
+//========== Call Functionality ==========
 const coinCountElement = document.getElementById("coin-count");
 const allCallButtons = document.querySelectorAll(".call-button");
 

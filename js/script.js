@@ -57,7 +57,7 @@ function handleCallClick(event) {
   let currentCoinCount = parseInt(coinCountElement.innerText);
 
   if (currentCoinCount < 20) {
-    alert("আপনার পর্যাপ্ত পরিমান কয়েন নেই! কল করতে কমপক্ষে ২০ কয়েন লাগবে।");
+    alert("❌ আপনার পর্যাপ্ত পরিমান কয়েন নেই! কল করতে কমপক্ষে ২০ কয়েন লাগবে।");
     return;
   }
 
@@ -68,7 +68,7 @@ function handleCallClick(event) {
   const serviceName = parentCard.querySelector("h3").innerText;
   const serviceNumber = parentCard.querySelector(".hotline-number").innerText;
 
-  alert("Calling " + serviceName + " (" + serviceNumber + ")...");
+  alert("📞 Calling " + serviceName + " (" + serviceNumber + ")...");
 
   addCallToHistory(serviceName, serviceNumber);
 }
